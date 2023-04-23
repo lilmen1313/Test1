@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="lilme"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-23 09:48:45 "/>
+        <attribute name="created" value="bGlsbWU7TElMTUVOOzIwMjMtMDQtMjM7IjExOjQwOjM5ICI7MjE2OQ=="/>
+        <attribute name="edited" value="bGlsbWU7TElMTUVOOzIwMjMtMDQtMjM7IjA5OjQ4OjQ1ICI7MTI7MjMzOQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="sizeArray" type="Integer" array="False" size=""/>
+            <input variable="sizeArray"/>
+            <declare name="array" type="String" array="True" size="sizeArray"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="sizeArray - 1" direction="inc" step="1">
+                <comment text="&#1079;&#1072;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1077; &#1084;&#1072;&#1089;&#1089;&#1080;&#1074;&#1072; &#1089; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099;"/>
+                <do expression="Len(array[i]) = 0">
+                    <input variable="array[i]"/>
+                </do>
+            </for>
+            <declare name="size" type="Integer" array="False" size=""/>
+            <assign variable="size" expression="0"/>
+            <for variable="i" start="0" end="sizeArray - 1" direction="inc" step="1">
+                <comment text="&#1074; &#1073;&#1083;&#1086;&#1082; &#1089;&#1093;&#1077;&#1084;&#1077; &#1089;&#1076;&#1077;&#1083;&#1072;&#1083; &#1082;&#1072;&#1082; &#1087;&#1086; &#1091;&#1089;&#1083;&#1086;&#1074;&#1080;&#1080; &#1079;&#1072;&#1076;&#1072;&#1095;&#1080;: &lt;= 3 &#1089;&#1080;&#1084;&#1074;&#1086;&#1083;&#1072;&#1084;"/>
+                <if expression="Len(array[i]) &lt;= 3">
+                    <then>
+                        <comment text="&#1050;&#1086;&#1083;-&#1074;&#1086; &#1089;&#1090;&#1088;&#1086;&#1082; &#1074; &#1084;&#1072;&#1089;&#1089;&#1080;&#1074;&#1077; array, &#1076;&#1083;&#1080;&#1085;&#1072; &#1082;&#1086;&#1090;&#1086;&#1088;&#1099;&#1093; &#1084;&#1077;&#1085;&#1100;&#1096;&#1077; &#1080;&#1083;&#1080; &#1088;&#1072;&#1074;&#1085;&#1072; 3 &#1089;&#1080;&#1084;&#1074;&#1086;&#1083;&#1072;&#1084;"/>
+                        <assign variable="size" expression="size + 1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="size = 0">
+                <then>
+                    <comment text="&#1074;&#1077;&#1090;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077;, &#1077;&#1089;&#1083;&#1080; &#1074; &#1084;&#1072;&#1089;&#1089;&#1080;&#1074;&#1077; array &#1074;&#1089;&#1077; &#1089;&#1090;&#1088;&#1086;&#1082;&#1080; &#1073;&#1086;&#1083;&#1100;&#1096;&#1077; 3&#1093; &#1089;&#1080;&#1084;&#1074;&#1086;&#1083;&#1086;&#1074;"/>
+                    <declare name="newArrStr" type="String" array="True" size="1"/>
+                    <assign variable="newArrStr[0]" expression="&quot;[]&quot;"/>
+                    <output expression="newArrStr[0]" newline="True"/>
+                </then>
+                <else>
+                    <declare name="newArrStr" type="String" array="True" size="size"/>
+                    <declare name="count" type="Integer" array="False" size=""/>
+                    <assign variable="count" expression="0"/>
+                    <for variable="i" start="0" end="sizeArray - 1" direction="inc" step="1">
+                        <if expression="Len(array[i]) &lt;= 3">
+                            <then>
+                                <assign variable="newArrStr[count]" expression="array[i]"/>
+                                <assign variable="count" expression="count + 1"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </for>
+                    <for variable="i" start="0" end="size - 1" direction="inc" step="1">
+                        <output expression="newArrStr[i]" newline="True"/>
+                    </for>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
